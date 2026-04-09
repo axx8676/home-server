@@ -1,0 +1,12 @@
+services:
+  jellyfin:
+    image: jellyfin/jellyfin:latest
+    container_name: jellyfin
+    ports:
+      - "8096:8096" #HTTP
+      - "8920:8920" #HTTPS
+    volumes:
+      - ./config:/config
+      - /home/axx8676/media:/media
+      - ./certs:/certs:ro
+    restart: unless-stopped
