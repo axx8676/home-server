@@ -22,7 +22,6 @@ This guide documents the full process to rebuild your home server from scratch. 
 
 * Go to: https://ubuntu.com/download/server
 * Download latest LTS (e.g., 24.04 LTS)
-* Or download version in setup
 
 ---
 
@@ -30,7 +29,6 @@ This guide documents the full process to rebuild your home server from scratch. 
 
 * Go to: https://rufus.ie
 * Download portable version
-* Or download version in setup
 
 ---
 
@@ -214,6 +212,22 @@ Restart to ensure changes have applied
 
 # 7. Setup Drives
 
+```bash
+blkid
+```
+
+Edit:
+
+```bash
+sudo nano /etc/fstab
+```
+
+Add:
+
+```
+UUID=xxxx /mnt/storage ext4 defaults 0 2
+```
+
 Install ZFS
 ```bash
 sudo apt install zfsutils-linux
@@ -238,6 +252,7 @@ sudo zfs create tank/media/shows
 sudo zfs create tank/media/music
 sudo zfs create tank/nextcloud
 sudo zfs create tank/nextcloud/pictures
+sudo zfs create tank/downloads
 ```
 
 Check status
@@ -245,7 +260,7 @@ Check status
 zpool status
 ```
 
-# 7. Install Docker
+# 8. Install Docker
 
 ## Install Docker
 
@@ -314,7 +329,7 @@ Then log out and back in.
 
 ---
 
-# 8. Restore Your GitHub Repo
+# 9. Restore Your GitHub Repo
 
 ## Clone your repo
 
@@ -341,7 +356,7 @@ docker ps
 
 ---
 
-# 9. Install Tailscale
+# 10. Install Tailscale
 
 ## Install
 
@@ -375,55 +390,6 @@ sudo tailscale up
 
 ```bash
 tailscale status
-```
-
----
-
-# 11. Optional: Storage Drives (HDD / DAS)
-
-## Identify drives
-
-```bash
-lsblk
-```
-
----
-
-## Format drive
-
-```bash
-sudo mkfs.ext4 /dev/sdX
-```
-
----
-
-## Mount drive
-
-```bash
-sudo mkdir /mnt/storage
-sudo mount /dev/sdX /mnt/storage
-```
-
----
-
-## Auto-mount on boot
-
-Get UUID:
-
-```bash
-blkid
-```
-
-Edit:
-
-```bash
-sudo nano /etc/fstab
-```
-
-Add:
-
-```
-UUID=xxxx /mnt/storage ext4 defaults 0 2
 ```
 
 ---
@@ -495,12 +461,13 @@ df -h
 1. Flash Ubuntu USB
 2. Install OS (LVM enabled)
 3. Update system
-4. Expand disk (lvextend + resize2fs)
-5. Install Docker + Compose
-6. Clone repo
-7. Start containers
-8. Install Tailscale
-9. Verify remote access
+4. Expand SSD if needed (lvextend + resize2fs)
+5. Setup drives and mirroring
+6. Install Docker + Compose
+7. Clone repo
+8. Start containers
+9. Install Tailscale
+10. Verify remote access
 
 ---
 
