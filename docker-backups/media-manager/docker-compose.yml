@@ -9,8 +9,8 @@ services:
       - TZ=America/Chicago
     volumes:
       - ./sonarr/config:/config
-      - /home/axx8676/media/tv:/tv #optional
-      - /home/axx8676/downloads #optional
+      - /tank/media/shows:/tv #optional
+      - /tank/downloads #optional
     ports:
       - 8989:8989
     restart: unless-stopped
@@ -25,8 +25,8 @@ services:
       - TZ=America/Chicago
     volumes:
       - ./radarr/config:/config
-      - /home/axx8676/media/movies:/movies #optional
-      - /home/axx8676/downloads:/downloads #optional
+      - /tank/media/movies:/movies #optional
+      - /tank/downloads:/downloads #optional
     ports:
       - 7878:7878
     restart: unless-stopped
@@ -41,8 +41,8 @@ services:
       - TZ=America/Chicago
     volumes:
       - ./lidarr/config:/config
-      - /home/axx8676/media/music:/music #optional
-      - /home/axx8676/downloads:/downloads #optional
+      - /tank/media/music:/music #optional
+      - /tank/downloads:/downloads #optional
     ports:
       - 8686:8686
     restart: unless-stopped
