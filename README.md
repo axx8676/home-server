@@ -212,6 +212,39 @@ Restart to ensure changes have applied
 
 ---
 
+# 7. Setup Drives
+
+Install ZFS
+```bash
+sudo apt install zfsutils-linux
+```
+
+Identify Drives
+```bash
+lsblk
+```
+Example: /dev/sdb
+
+Create the mirror pool
+```bash
+sudo zpool create tank mirror /dev/sdX /dev/sdY
+```
+
+Create folders for dockers
+```bash
+sudo zfs create tank/media
+sudo zfs create tank/media/movies
+sudo zfs create tank/media/shows
+sudo zfs create tank/media/music
+sudo zfs create tank/nextcloud
+sudo zfs create tank/nextcloud/pictures
+```
+
+Check status
+```bash
+zpool status
+```
+
 # 7. Install Docker
 
 ## Install Docker
@@ -281,7 +314,7 @@ Then log out and back in.
 
 ---
 
-# 9. Restore Your GitHub Repo
+# 8. Restore Your GitHub Repo
 
 ## Clone your repo
 
@@ -308,7 +341,7 @@ docker ps
 
 ---
 
-# 10. Install Tailscale
+# 9. Install Tailscale
 
 ## Install
 
@@ -423,18 +456,7 @@ Restore on AC Power Loss → Power On
 
 ---
 
-# 13. Backup Strategy (Recommended)
-
-* Backup Docker configs (your repo)
-* Backup important data from `/mnt/storage`
-* Optionally use:
-
-  * rsync
-  * external drive
-
----
-
-# 14. Troubleshooting
+# 13. Troubleshooting
 
 ## Check logs
 
