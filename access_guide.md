@@ -27,7 +27,7 @@ Tailscale creates a secure connection to the server from anywhere.
 2. Install the app on your device.  
    - **Phone:** App Store (iOS) / Google Play (Android)  
    - **Computer:** Windows / macOS / Linux  
-   - **Raspberry Pi / TV device:** Already pre-configured, let me know if you would like Jellyfin access on your TV and would like help setting this up 
+   - **Raspberry Pi / TV device:** Let me know if you would like Jellyfin access on your TV and would like help setting this up. May require you purchasing a raspberry pi.
 3. Open Tailscale and log in using the shared account credentials found in the secure share link.  
 4. You should now see the server device listed inside Tailscale. This means your device is securely connected.
 
@@ -62,6 +62,10 @@ Tailscale creates a secure connection to the server from anywhere.
 2. Open the app and log in using the shared Jellyfin username and password.  
 3. You can now stream movies, shows, and music from the server.
 
+### Jellyseerr (Media request)
+
+1. There is no mobile app for this one, so follow the same as the computer instructions in your browser
+
 ---
 
 ## 3️⃣ Computer Instructions
@@ -87,6 +91,17 @@ Tailscale creates a secure connection to the server from anywhere.
 1. Open a web browser and go to the Jellyfin web URL http://axel-home-server:8096
 2. Log in using the shared Jellyfin username and password
 3. Stream media directly in your browser.
+
+### Jellyseerr (Media Request)
+
+1. Open a web browser and go to the Jellyseerr web URL http://axel-home-server:5055
+2. Log in using the shared Jellyfin username and password
+3. Search the Movie or TV Series you would like to request. Please don't request a super large series, as those take up a lot of space.
+4. Click "request" and leave the default quality profile
+5. Let me know you requested something, or I will check on it every so often.
+6. I will likely just approve it, assuming it isn't too big. Since it is a shared account, you won't get a notification but I'll let you know when its available on jellyfin.
+7. Wait for a while for the server to find and download the media. Movies shouldn't take more than an hour, series can take a while longer. If you don't see it in jellyfin, let me know, the download may have failed or the server was unable to find it.
+8. If jellyseerr isn't working for you, you can also just reach out and request something directly.
 
 ---
 
