@@ -1,0 +1,35 @@
+services:
+  gluetun:
+    image: qmcgaw/gluetun
+    container_name: gluetun
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - VPN_SERVICE_PROVIDER=private internet access
+      - OPENVPN_USER=p1559872
+      - OPENVPN_PASSWORD=Blookstadax1337
+      - SERVER_REGIONS=US Texas
+    ports:
+      - 8081:8080   # qBittorrent Web UI
+    networks:
+      - media
+    restart: unless-stopped
+
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent
+    container_name: qbittorrent
+    network_mode: "service:gluetun"
+    depends_on:
+      - gluetun
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - WEBUI_PORT=8080
+    volumes:
+      - ./config:/config
+      - /tank/downloads:/downloads
+    restart: unless-stopped
+
+networks:
+  media:
+    external: true

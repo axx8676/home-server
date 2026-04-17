@@ -1,0 +1,11 @@
+services:
+  rclone:
+    image: rclone/rclone:latest
+    container_name: rclone
+    restart: unless-stopped
+    environment:
+      - TZ=America/Chicago
+    volumes:
+      - ./config:/config        # rclone config file goes here
+      - /home/axx8676/downloads:/downloads
+
